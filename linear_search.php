@@ -20,7 +20,7 @@ function verify($index){
     if($index != false){
         echo " Target found at index : " . $index;
     }else{
-        echo " Target not found in the list  " . $index;
+        echo " Target not found in the list  " ;
     }
 }
 
