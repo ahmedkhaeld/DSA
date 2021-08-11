@@ -63,21 +63,18 @@
               ]
   ];
   /**
-   * method1 function
-   * target: order less weight first 
-   * if $a is smaller or equal than $b in weight, then $a will end up having smaller index
-   * to be ordered first
-   * 
+   * method4 function
+   * order array by ascending order according to the weight
+   * Combining array_multisort() with array_map() and its callback for 
+   * obtaining an array of weights, allows for this complex sorting to
+   * happen in only one call.
    *
-   * @param [type] $a
-   * @param [type] $b
-   * @return -1 or 1
    */
-  function method1($a,$b) 
-  {
-    return ($a[2]["sizes"]["weight"] <= $b[2]["sizes"]["weight"]) ? -1 : 1;
-  }
-  usort($array, "method1");
+
+
+  array_multisort(array_map(function($element) {
+    return $element[2]['sizes']['weight'];
+}, $array), SORT_ASC, $array);
   echo '<h2>Array As Is</h2><pre>' . print_r($array, 1) . '</pre>';
 
   ?>
